@@ -8,7 +8,7 @@
 
 ### Ionic app setup
 1. Clone repo: 'git clone https://github.com/b-jae-duncan/ionic5-cognito-example'
-2. Copy the file /src/app/variables.ts.sample to /src/app/variables.ts and add the following: 
+2. Copy the file `/src/app/variables.ts.sample` to `/src/app/variables.ts` and add the following: 
    * userPoolId: 'your-region_1gfVMWz3c',
    * clientId: 'your-client-id',
 3. Open a terminal and navigate to the project folder and run
