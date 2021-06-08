@@ -64,6 +64,7 @@ export class SignupPage implements OnInit {
 
 
 
+
   register() {
     this.CognitoService.signUp(this.username, this.password, this.phone).then(
       res => {
@@ -80,6 +81,7 @@ export class SignupPage implements OnInit {
     this.CognitoService.confirmUser(verificationCode, this.username).then(
       res => {
         console.log(res);
+
       },
       err => {
         alert(err.message);
@@ -98,6 +100,7 @@ export class SignupPage implements OnInit {
       }
     )
   }
+
 
 }
 

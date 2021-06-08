@@ -18,13 +18,13 @@ export class LoginPage implements OnInit {
 
   constructor(
     public navCtrl: NavController,
-    public CognitoSerive: CognitoServiceService,
+    public CognitoService: CognitoServiceService,
     public alertController: AlertController
     ) {
   }
 
   ngOnInit() {
-    this.CognitoSerive.getCurrentUser().then(userSession => {
+    this.CognitoService.getCurrentUser().then(userSession => {
       console.log(userSession['accessToken'].payload.username) 
     })
   }
@@ -60,7 +60,7 @@ export class LoginPage implements OnInit {
   }
 
   login(){
-    this.CognitoSerive.authenticate(this.username, this.password)
+    this.CognitoService.authenticate(this.username, this.password)
     .then(res =>{
       console.log(res);
       if(res === 'SMS_MFA') {
@@ -76,7 +76,7 @@ export class LoginPage implements OnInit {
   }
 
   sendMFA(verificationCode){
-    this.CognitoSerive.sendMFACode(verificationCode, this.username)
+    this.CognitoService.sendMFACode(verificationCode, this.username)
     .then(res =>{
       console.log(res);
       // TODO Enter code for next move here
