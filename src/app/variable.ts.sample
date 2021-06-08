@@ -1,0 +1,8 @@
+export class Variables {
+    public PARAMS = {
+        COGNITO_POOL: {
+            UserPoolId: '',
+            ClientId: ''
+        }
+    }
+}
