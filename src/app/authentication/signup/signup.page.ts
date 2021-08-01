@@ -69,7 +69,10 @@ export class SignupPage implements OnInit {
     this.CognitoService.signUp(this.username, this.password, this.phone).then(
       res => {
         console.log(res);
-        this.promptVerificationCode();
+        if(res['codeDeliveryDetails']) {
+          this.promptVerificationCode();
+        }
+        
       },
       err => {
         console.log(err);

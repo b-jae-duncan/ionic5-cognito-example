@@ -18,7 +18,8 @@ export class CognitoServiceService {
         new AWSCognito.CognitoUserAttribute({
           Name: 'phone_number',
           Value: phone,
-        })
+        }),
+
       );
 
       userPool.signUp(
@@ -30,6 +31,8 @@ export class CognitoServiceService {
           if (err) {
             reject(err);
           } else {
+            let cognitoUser = result.user;
+            console.log('user name is ' + cognitoUser.getUsername());
             resolved(result);
           }
         }
@@ -109,10 +112,11 @@ export class CognitoServiceService {
           // User was signed up by an admin and must provide new
           // password and required attributes, if any, to complete
           // authentication.
-
+          console.log({userAttributes})
           // the api doesn't accept this field back
           // userAttributes.email = email;
           // delete userAttributes.email_verified;
+          delete userAttributes.phone_number_verified;
           console.log('newPasswordRequired');
           cognitoUser.completeNewPasswordChallenge(password, userAttributes, {
             onSuccess: (result) => {
